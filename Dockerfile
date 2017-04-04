@@ -4,9 +4,11 @@ ENV DEBIAN_FRONTEND noninteractive
 
 ENV PASSENGER_VERSION 5.1.2
 
-RUN apt-get update && apt-get install -y software-properties-common && apt-get clean
+RUN apt-get update && apt-get install -y software-properties-common curl && apt-get clean
 RUN add-apt-repository -y ppa:brightbox/ruby-ng
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list
 RUN apt-get update && \
     apt-get install -y build-essential \
                        apache2 apache2-dev \
@@ -17,7 +19,8 @@ RUN apt-get update && \
                        libapr1-dev libaprutil1-dev \
                        git-core \
                        libpq-dev \
-                       nodejs && \
+                       nodejs \
+                       yarn && \
     apt-get clean
 RUN gem install bundler --no-ri --no-rdoc
 RUN gem install passenger --no-ri --no-rdoc --version "${PASSENGER_VERSION}"

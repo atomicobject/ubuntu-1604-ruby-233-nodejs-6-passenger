@@ -19,6 +19,6 @@ RUN apt-get update && \
                        libpq-dev \
                        nodejs && \
     apt-get clean
-RUN gem install bundler
+RUN gem install bundler --no-ri --no-rdoc
 RUN gem install passenger --no-ri --no-rdoc --version "${PASSENGER_VERSION}"
 RUN passenger-install-apache2-module --auto

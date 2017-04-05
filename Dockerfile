@@ -1,5 +1,7 @@
 FROM ubuntu:16.04
 
+LABEL maintainer  "Justin Kulesza <justin.kulesza@atomicobject.com>"
+
 ENV DEBIAN_FRONTEND noninteractive
 
 ENV PASSENGER_VERSION 5.1.2
@@ -20,7 +22,8 @@ RUN apt-get update && \
                        git-core \
                        libpq-dev \
                        nodejs \
-                       yarn && \
+                       yarn \
+                       supervisor && \
     apt-get clean
 RUN gem install bundler --no-ri --no-rdoc
 RUN gem install passenger --no-ri --no-rdoc --version "${PASSENGER_VERSION}"

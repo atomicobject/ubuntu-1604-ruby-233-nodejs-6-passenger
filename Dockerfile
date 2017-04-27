@@ -23,6 +23,7 @@ RUN apt-get update && \
                        git-core \
                        libpq-dev \
                        nodejs \
+                       tzdata \
                        yarn \
                        supervisor && \
     apt-get clean

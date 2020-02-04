@@ -1,7 +1,6 @@
 FROM ubuntu:16.04
 
-LABEL maintainer  "Justin Kulesza <justin.kulesza@atomicobject.com>"
-LABEL version 5.1.2-4
+LABEL version 5.1.2-5
 
 ENV DEBIAN_FRONTEND noninteractive
 
